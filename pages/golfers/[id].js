@@ -1,18 +1,18 @@
 import Layout from '../../components/Layout'
 import ScorePostWidget from '../../components/ScorePostWidget'
 import ScoreCard from '../../components/ScoreCard'
-import golferScores from '../../lib/golferScores'
+import useGolferScores from '../../lib/useGolferScores'
 import { useRouter } from 'next/router'
-
 
 const Golfer = () => {
   const router = useRouter()
   const { id } = router.query
-  const { golfer, error } = golferScores(id)
-  if (!golfer) {
+  const { scores, error } = useGolferScores(id)
+
+  if (!scores) {
     return null
   }
-  const { name, scores } = golfer
+
   return (
     <Layout>
       <>
@@ -28,7 +28,7 @@ const Golfer = () => {
                 totalScore={score.total_score}
                 playedAt={score.played_at}
                 userId={score.user_id}
-                userName={name}
+                userName={score.user_name}
               />
             ))}
           </>

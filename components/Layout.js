@@ -16,15 +16,11 @@ const Layout = ({ children }) => {
         <span className="h-8 items-center space-x-6">
           <span className="text-2xl">Golfr 🏌️</span>
           <span className="text-xl">
-            <Link href="/">
-              Home
-            </Link>
+            <Link href="/">Home</Link>
           </span>
         </span>
         <span className="h-8 items-center text-xl ml-auto">
-          <Link href={'/golfers/' + userId}>
-            {username}
-          </Link>
+          <Link href={'/golfers/' + userId}>{username}</Link>
           <span className="text-sm">
             {' ('}
             <Link href={'/logout'}>
