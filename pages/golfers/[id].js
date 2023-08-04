@@ -3,6 +3,7 @@ import ScorePostWidget from '../../components/ScorePostWidget'
 import ScoreCard from '../../components/ScoreCard'
 import useGolferScores from '../../lib/useGolferScores'
 import { useRouter } from 'next/router'
+import { getUserId } from '../../lib/userAuth'
 
 const Golfer = () => {
   const router = useRouter()
@@ -20,7 +21,7 @@ const Golfer = () => {
           error
         ) : (
           <>
-            <ScorePostWidget />
+            {Number(id) === getUserId() && <ScorePostWidget />}
             {scores && scores.map(score => (
               <ScoreCard
                 key={score.id}
